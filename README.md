@@ -43,7 +43,7 @@ RSJEV is a one-pass framework for remote sensing scene classification. It combin
 
 ## 🛠️Methodology
 
-![RSJEV architecture: image and task prompt are processed by Qwen3.5-0.8B; OnePass Decider scores candidate categories from the RSSC answer slot.](assets/RSJEV_model.png)
+![RSJEV architecture: image and task prompt are processed by Qwen3.5-0.8B; OnePass Decider scores candidate categories from the RSSC answer slot.](figure/RSJEV_model.png)
 
 <p align="center"><strong>Figure 1. RSJEV and the OnePass Decider.</strong></p>
 
