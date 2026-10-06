@@ -27,9 +27,10 @@
   <a href="https://www.arxiv.org/abs/2602.14201"><img src="https://img.shields.io/badge/ArXiv-2602.14201-brown?logo=arxiv" alt="paper"></a>  
   <a href="https://huggingface.co/initiacms/GeoEyes"><img src="https://img.shields.io/badge/🤗%20huggingface-Model-purple" alt="checkpoint"></a>
 </div> -->
+
 ## 📚Contents
 
-- [Contents](#contents)
+- [📚Contents](#contents)
 - [🔍Overview](#overview)
 - [🛠️Methodology](#️methodology)
 - [🚀Evaluation](#evaluation)
