@@ -29,7 +29,7 @@
 </div> -->
 ## 📚Contents
 
-- [📚Contents](#contents)
+- [Contents](#contents)
 - [🔍Overview](#overview)
 - [🛠️Methodology](#️methodology)
 - [🚀Evaluation](#evaluation)
