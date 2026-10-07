@@ -9,7 +9,7 @@
     <strong>Liangpei Zhang</strong><sup>1</sup>
   </p>
   <p>
-    <sup>1</sup>Wuhan University, Wuhan
+    <sup>1</sup>Wuhan University
   </p>
 </div>
 <div align="center">
