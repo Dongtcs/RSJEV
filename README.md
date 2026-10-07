@@ -44,7 +44,7 @@ Remote sensing scene classification is a fundamental task in Earth observation a
 2. OPD reads the final-layer hidden state at the designated `[RSSC]` answer slot.
 3. The pretrained language-model head scores the candidate option tokens. A softmax over those scores produces category probabilities and the highest-scoring option is selected.
 
-The experiments use **Qwen3.5-0.8B** as the main backbone. Training combines label-smoothed cross-entropy with Brier-score regularization.
+The experiments use **Qwen3.5-0.8B** as the main backbone.
 
 ## 🚀Evaluation
 
