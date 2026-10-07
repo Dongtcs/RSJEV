@@ -2,26 +2,15 @@
   <h2><strong>RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models</strong></h2>
   <p>
     <strong>Dongchen Si</strong><sup>1</sup>, 
-    <strong>Di Wang</strong><sup>1,2,3,4</sup>, 
+    <strong>Di Wang</strong><sup>1</sup>, 
     <strong>Mingzhen Xu</strong><sup>1</sup>, 
-    <strong>Jing Zhang</strong><sup>1,2</sup>, 
-    <strong>Bo Du</strong><sup>1,2,3,4</sup>, 
-    <strong>Liangpei Zhang</strong><sup>5</sup>
+    <strong>Jing Zhang</strong><sup>1</sup>, 
+    <strong>Bo Du</strong><sup>1</sup>, 
+    <strong>Liangpei Zhang</strong><sup>1</sup>
   </p>
-  <p> 
-    <sup>1</sup>School of Computer Science, Wuhan University, Wuhan 430072, China
-    <br>
-    <sup>2</sup>Zhongguancun Academy, Beijing 100094, China
-    <br>
-    <sup>3</sup>National Engineering Research Center for Multimedia Software,
-    Wuhan University, Wuhan 430072, China
-    <br>
-    <sup>4</sup>Hubei Key Laboratory of Multimedia and Network Communication Engineering,
-    Wuhan University, Wuhan 430072, China
-    <br>
-    <sup>5</sup>State Key Laboratory of Information Engineering in Surveying,
-    Mapping and Remote Sensing, Wuhan University, Wuhan, Hubei 430079, China
-    </p> 
+  <p>
+      <sup>1</sup>Wuhan University, Wuhan 430072, China
+  </p>
 </div>
 <div align="center">
   <a href="https://arxiv.org/abs/2610.08539">
@@ -29,18 +18,21 @@
   </a>
 </div>
 
+## 🔥 News
+🚀 Code release coming soon!
+
 ## 📚Contents
 
 - [📚Contents](#contents)
-- [🔍Overview](#overview)
+- [🔍Introduction](#overview)
 - [🛠️Methodology](#️methodology)
 - [🚀Evaluation](#evaluation)
   - [Inference efficiency](#inference-efficiency)
 - [🔗Citation](#citation)
 
-## 🔍Overview
+## 🔍Introduction
 
-RSJEV is a one-pass framework for remote sensing scene classification. It combines an image, a task instruction, and an explicit set of candidate scene categories in a multimodal model, then predicts a category directly. Its **OnePass Decider (OPD)** avoids autoregressive answer generation by scoring the candidate options from a single multimodal decision state.
+Remote sensing scene classification is a fundamental task in Earth observation and geospatial analysis. Existing approaches mainly follow three paradigms: task-specific visual classification, vision-language similarity matching, and autoregressive multimodal generation. However, visual classifiers rely on predefined label spaces, CLIP-based methods perform recognition through static image-text alignment, and multimodal large language models (MLLMs) introduce unnecessary token-level generation for classification tasks with explicit candidate categories. To address these limitations, we propose RSJEV, a one-pass multimodal decision framework for remote sensing scene classification. Unlike conventional MLLMs that formulate classification as autoregressive text generation, RSJEV reformulates scene classification as a candidate-conditioned multimodal discriminative decision process, where visual representations, task instructions, and candidate category semantics are jointly modeled. Specifically, we introduce a OnePass Decider that extracts multimodal decision states and directly estimates category probabilities within the candidate category space, eliminating autoregressive decoding while preserving vision-language interactions. Extensive experiments on three widely used remote sensing scene classification benchmarks, including UC Merced, AID, and NWPU-RESISC45, demonstrate that RSJEV achieves superior classification performance compared with representative CNN-, Transformer-, Mamba-, CLIP-, and MLLM-based methods. Moreover, RSJEV significantly reduces inference costs and achieves a better accuracy-efficiency trade-off with only a compact 0.8B-parameter model. These results demonstrate the effectiveness of state-conditioned multimodal decision making for efficient remote sensing image understanding. 
 
 ## 🛠️Methodology
 
@@ -59,7 +51,7 @@ The experiments use **Qwen3.5-0.8B** as the main backbone. Training combines lab
 The paper reports the following performance on three remote sensing scene classification benchmarks:
 
 | Dataset | Classes | Training split | Overall accuracy | F1 score |
-| --- | ---: | ---: | ---: | ---: |
+| :---: | :---: | :---: | :---: | :---: |
 | UC Merced Land Use (UCM) | 21 | 50% | **97.71%** | **97.72%** |
 | Aerial Image Dataset (AID) | 30 | 20% | **96.56%** | **96.30%** |
 | NWPU-RESISC45 (NWPU) | 45 | 20% | **94.59%** | **94.58%** |
