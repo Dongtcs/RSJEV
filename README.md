@@ -23,10 +23,11 @@
     Mapping and Remote Sensing, Wuhan University, Wuhan, Hubei 430079, China
     </p> 
 </div>
-<!-- <div align="center">
-  <a href="https://www.arxiv.org/abs/2602.14201"><img src="https://img.shields.io/badge/ArXiv-2602.14201-brown?logo=arxiv" alt="paper"></a>  
-  <a href="https://huggingface.co/initiacms/GeoEyes"><img src="https://img.shields.io/badge/🤗%20huggingface-Model-purple" alt="checkpoint"></a>
-</div> -->
+<div align="center">
+  <a href="https://arxiv.org/abs/2610.08539">
+    <img src="https://img.shields.io/badge/ArXiv-2610.08539-brown?logo=arxiv" alt="paper">
+  </a>
+</div>
 
 ## 📚Contents
 
