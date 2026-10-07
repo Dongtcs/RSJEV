@@ -9,7 +9,7 @@
     <strong>Liangpei Zhang</strong><sup>1</sup>
   </p>
   <p>
-      <sup>1</sup>Wuhan University, Wuhan 430072, China
+    <sup>1</sup>Wuhan University, Wuhan
   </p>
 </div>
 <div align="center">
@@ -76,9 +76,13 @@ On one NVIDIA A40 GPU, with batch size 1 and bfloat16 inference, the paper repor
 If you use RSJEV in your research, please cite:
 
 ```bibtex
-@misc{si_rsjev,
-  title  = {RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models},
-  author = {Si, Dongchen and Wang, Di and Xu, Mingzhen and Zhang, Jing and Du, Bo and Zhang, Liangpei},
-  url    = {https://github.com/Dongtcs/RSJEV}
+@article{si_rsjev,
+  title        = {RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models},
+  author       = {Si, Dongchen and Wang, Di and Xu, Mingzhen and Zhang, Jing and Du, Bo and Zhang, Liangpei},
+  journal      = {arXiv preprint arXiv:2610.08539},
+  year         = {2026},
+  eprint       = {2610.08539},
+  archivePrefix = {arXiv},
+  url          = {https://arxiv.org/abs/2610.08539}
 }
 ```
