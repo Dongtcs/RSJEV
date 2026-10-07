@@ -1,16 +1,14 @@
 <div align="center">
   <h2><strong>RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models</strong></h2>
   <p>
-    <strong>Dongchen Si</strong><sup>1</sup>, 
-    <strong>Di Wang</strong><sup>1</sup>, 
-    <strong>Mingzhen Xu</strong><sup>1</sup>, 
-    <strong>Jing Zhang</strong><sup>1</sup>, 
-    <strong>Bo Du</strong><sup>1</sup>, 
-    <strong>Liangpei Zhang</strong><sup>1</sup>
+    <strong>Dongchen Si</strong>, 
+    <strong>Di Wang</strong>, 
+    <strong>Mingzhen Xu</strong>, 
+    <strong>Jing Zhang</strong>, 
+    <strong>Bo Du</strong>, 
+    <strong>Liangpei Zhang</strong>
   </p>
-  <p>
-    <sup>1</sup>Wuhan University
-  </p>
+  <p>Wuhan University</p>
 </div>
 <div align="center">
   <a href="https://arxiv.org/abs/2610.08539">
