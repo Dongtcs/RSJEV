@@ -1,29 +1,160 @@
-# RSJEV: inference demo
+<div align="center">
+  <h2><strong>RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models</strong></h2>
 
-This directory contains the image-classification inference path only. It does not import the training package. A trained checkpoint is required; base Qwen3.5 weights alone are not a scene-classification checkpoint.
+  <p>
+    <strong>Dongchen Si</strong>,
+    <strong>Di Wang</strong>,
+    <strong>Mingzhen Xu</strong>,
+    <strong>Jing Zhang</strong>,
+    <strong>Bo Du</strong>,
+    <strong>Liangpei Zhang</strong>
+  </p>
+  <p>Wuhan University</p>
 
-## Files
+  <p>
+    <a href="https://arxiv.org/abs/2610.08539"><img src="https://img.shields.io/badge/arXiv-2610.08539-b31b1b?logo=arxiv" alt="Paper"></a>
+    <a href="https://huggingface.co/Dongtcs/RSJEV/tree/main"><img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Model-purple" alt="Model checkpoint"></a>
+  </p>
+</div>
 
-- `demo.py`: single-image command-line demo.
-- `rsjev.py`: prompt construction, answer-slot extraction, and option scoring.
-- `classes/aid.json`, `classes/nwpu.json`, `classes/ucm.json`: candidate class lists.
-- `prompts.json`: fallback prompt when a checkpoint has no prompt file.
+## 🔥 News
 
-The trained checkpoint must contain `config.json`, model weights, tokenizer and processor files, and `decision_config.json`. When present, its `classes.json` and `prompts.json` are used by default.
+- **2026-10-08:** ✅ Code and pretrained model weights are now publicly available!
+- **2026-10-07:** 🚀 Code release coming soon!
 
-## Run
+## 📚Contents
 
-Install a GPU-compatible PyTorch build for your machine and install the remaining dependencies from `requirements.txt`. From this directory:
+- [📚Contents](#contents)
+- [🔍Introduction](#Introduction)
+- [🛠️Methodology](#️methodology)
+- [⚙️Installation](#Installation)
+- [🚀Evaluation](#evaluation)
+  - [Inference](#Inference)
+  - [Inference efficiency](#inference-efficiency)
+- [🔗Citation](#citation)
+
+## 🔍Introduction
+
+Remote sensing scene classification is a fundamental task in Earth observation and geospatial analysis. Existing approaches mainly follow three paradigms: task-specific visual classification, vision-language similarity matching, and autoregressive multimodal generation. However, visual classifiers rely on predefined label spaces, CLIP-based methods perform recognition through static image-text alignment, and multimodal large language models (MLLMs) introduce unnecessary token-level generation for classification tasks with explicit candidate categories. To address these limitations, we propose RSJEV, a one-pass multimodal decision framework for remote sensing scene classification. Unlike conventional MLLMs that formulate classification as autoregressive text generation, RSJEV reformulates scene classification as a candidate-conditioned multimodal discriminative decision process, where visual representations, task instructions, and candidate category semantics are jointly modeled. Specifically, we introduce a OnePass Decider that extracts multimodal decision states and directly estimates category probabilities within the candidate category space, eliminating autoregressive decoding while preserving vision-language interactions. Extensive experiments on three widely used remote sensing scene classification benchmarks, including UC Merced, AID, and NWPU-RESISC45, demonstrate that RSJEV achieves superior classification performance compared with representative CNN-, Transformer-, Mamba-, CLIP-, and MLLM-based methods. Moreover, RSJEV significantly reduces inference costs and achieves a better accuracy-efficiency trade-off with only a compact 0.8B-parameter model. These results demonstrate the effectiveness of state-conditioned multimodal decision making for efficient remote sensing image understanding. 
+
+## 🛠️Methodology
+
+![RSJEV architecture: image and task prompt are processed by Qwen3.5-0.8B; OnePass Decider scores candidate categories from the RSSC answer slot.](figure/RSJEV_model.png)
+
+<p align="center"><strong>Figure 1. RSJEV and the OnePass Decider.</strong></p>
+
+1. A remote sensing image and a prompt containing the classification question and candidate categories are processed by the multimodal backbone.
+2. OPD reads the final-layer hidden state at the designated `[RSSC]` answer slot.
+3. The pretrained language-model head scores the candidate option tokens. A softmax over those scores produces category probabilities and the highest-scoring option is selected.
+
+The experiments use **Qwen3.5-0.8B** as the main backbone.
+
+## ⚙️ Installation 
+
+This guide explains how to set up the environment for **RSJEV** and run inference with the released model weights.
+
+### Requirements
+
+- Linux (recommended).
+- Python 3.11 (the Python version used with the supplied environment export).
+- Conda or Miniconda.
+- A compatible GPU driver and an appropriately built PyTorch installation for your hardware (CUDA or ROCm/other vendor-specific stack).
+
+The repository includes a `requirements.txt` exported from the original development environment. 
+
+### 1. Clone the repository and create the environment
 
 ```bash
-HIP_VISIBLE_DEVICES=1 python demo.py \
-  --checkpoint /root/private_data/coding/decider-main/runs/aid/Qwen3_5_0_8B_language_model_e10_ls_0.05_brier_0.1_color_0/best \
-  --image /root/private_data/DATASET/classification/aid/all_img/airport_81.jpg \
-  --json-out prediction.json
+conda create -n rsjev python=3.11 -y
+conda activate rsjev
+
+git clone https://github.com/Dongtcs/RSJEV.git
+cd RSJEV
 ```
 
-The command prints the predicted class and top five probabilities. `prediction.json` includes logits and probabilities for every candidate class. Use `--top-k` to change printed length.
+### 2. Install dependencies
 
-By default, classes come from the checkpoint. To score an image against another dataset's candidate list, specify `--dataset nwpu` (or `aid`, `ucm`). A custom class file with the same `{"classes":[{"answer":"..."},...]}` structure can be passed with `--classes`. The option head is expanded to the requested number of candidates without modifying checkpoint weights.
+First, install **PyTorch and torchvision matching your GPU and driver**. Follow the [official PyTorch installation instructions](https://pytorch.org/get-started/locally/) for your platform.
 
-The demo reads `answer_slot`, `prompt_format`, image size, and context limit from `decision_config.json`. Checkpoints without an `answer_slot` field use the original `(` slot; newer `[RSSC]` checkpoints use the saved special token. The model scores option-letter tokens in one forward pass, without generating a text answer.
+For a lightweight **inference-oriented starting environment**, install the core packages recorded in the provided `requirements.txt`:
+
+```bash
+python -m pip install \
+    "transformers==5.6.0" \
+    "torch==2.7.1" \
+    "peft==0.18.1" \
+    "safetensors==0.8.0" \
+    "huggingface_hub>=1.5,<2" \
+    "sentencepiece==0.2.1" \
+    "Pillow==11.3.0"
+```
+
+This lightweight environment is intended for RSJEV inference. Additional dependencies may be required depending on the specific inference configuration.
+
+To attempt reproduction of the **original full software environment**, you may instead use:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+
+## 🚀Evaluation
+
+The paper reports the following performance on three remote sensing scene classification benchmarks:
+
+| Dataset | Classes | Training split | Overall accuracy | F1 score |
+| :---: | :---: | :---: | :---: | :---: |
+| UC Merced Land Use (UCM) | 21 | 50% | **97.71%** | **97.72%** |
+| Aerial Image Dataset (AID) | 30 | 20% | **96.56%** | **96.30%** |
+| NWPU-RESISC45 (NWPU) | 45 | 20% | **94.59%** | **94.58%** |
+
+These are the RSJEV results reported in Table I of the paper. The remaining images in each split are used for testing.
+
+### 🔍 Inference
+
+Download the pretrained RSJEV model weights from [🤗 Hugging Face](https://huggingface.co/Dongtcs/RSJEV) and save them to `./checkpoints/RSJEV/`.
+
+Alternatively, download the model using the Hugging Face CLI:
+
+```bash
+hf download Dongtcs/RSJEV --local-dir ./checkpoints/RSJEV
+```
+
+Run inference on a sample remote sensing image from the `images/` directory:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python demo.py \
+    --checkpoint ./checkpoints/RSJEV \
+    --image ./images/sparseresidential_232.jpg
+```
+
+To save the prediction results as a JSON file, add the optional `--json-out` argument:
+
+### Inference efficiency
+
+On one NVIDIA A40 GPU, with batch size 1 and bfloat16 inference, the paper reports **102.18 ms per image**, **9.79 FPS**, and **1.68 GB GPU memory** for RSJEV. Measurements use 30 test images after a five-image warm-up.
+
+<p align="center">
+  <img src="figure/efficiency_memory_latency.png" alt="GPU memory and inference latency for RSJEV and six MLLM baselines" width="47%">
+  <img src="figure/efficiency_fps.png" alt="Inference throughput in FPS for RSJEV and six MLLM baselines" width="47%">
+</p>
+
+<p align="center"><strong>Figure 2. GPU memory and latency (left), Inference throughput (right).</strong></p>
+
+<!-- See the [paper](paper/RSJEV.pdf) for the full methodology, baseline comparisons, and ablation studies. -->
+
+## 🔗Citation
+
+If you use RSJEV in your research, please cite:
+
+```bibtex
+@article{si_rsjev,
+  title        = {RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models},
+  author       = {Si, Dongchen and Wang, Di and Xu, Mingzhen and Zhang, Jing and Du, Bo and Zhang, Liangpei},
+  journal      = {arXiv preprint arXiv:2610.08539},
+  year         = {2026},
+  eprint       = {2610.08539},
+  archivePrefix = {arXiv},
+  url          = {https://arxiv.org/abs/2610.08539}
+}
+```
