@@ -1,30 +1,35 @@
 <div align="center">
   <h2><strong>RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models</strong></h2>
+
   <p>
-    <strong>Dongchen Si</strong>, 
-    <strong>Di Wang</strong>, 
-    <strong>Mingzhen Xu</strong>, 
-    <strong>Jing Zhang</strong>, 
-    <strong>Bo Du</strong>, 
+    <strong>Dongchen Si</strong>,
+    <strong>Di Wang</strong>,
+    <strong>Mingzhen Xu</strong>,
+    <strong>Jing Zhang</strong>,
+    <strong>Bo Du</strong>,
     <strong>Liangpei Zhang</strong>
   </p>
   <p>Wuhan University</p>
-</div>
-<div align="center">
-  <a href="https://arxiv.org/abs/2610.08539">
-    <img src="https://img.shields.io/badge/ArXiv-2610.08539-brown?logo=arxiv" alt="paper">
-  </a>
+
+  <p>
+    <a href="https://arxiv.org/abs/2610.08539"><img src="https://img.shields.io/badge/arXiv-2610.08539-b31b1b?logo=arxiv" alt="Paper"></a>
+    <a href="https://huggingface.co/Dongtcs/RSJEV/tree/main"><img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Model-purple" alt="Model checkpoint"></a>
+  </p>
 </div>
 
 ## 🔥 News
-🚀 Code release coming soon!
+
+- **2026-10-08:** ✅ Code and pretrained model weights are now publicly available!
+- **2026-10-07:** 🚀 Code release coming soon!
 
 ## 📚Contents
 
 - [📚Contents](#contents)
-- [🔍Introduction](#overview)
+- [🔍Introduction](#Introduction)
 - [🛠️Methodology](#️methodology)
+- [⚙️Installation](#Installation)
 - [🚀Evaluation](#evaluation)
+  - [Inference](#Inference)
   - [Inference efficiency](#inference-efficiency)
 - [🔗Citation](#citation)
 
@@ -44,6 +49,55 @@ Remote sensing scene classification is a fundamental task in Earth observation a
 
 The experiments use **Qwen3.5-0.8B** as the main backbone.
 
+## ⚙️ Installation 
+
+This guide explains how to set up the environment for **RSJEV** and run inference with the released model weights.
+
+### Requirements
+
+- Linux (recommended).
+- Python 3.11 (the Python version used with the supplied environment export).
+- Conda or Miniconda.
+- A compatible GPU driver and an appropriately built PyTorch installation for your hardware (CUDA or ROCm/other vendor-specific stack).
+
+The repository includes a `requirements.txt` exported from the original development environment. 
+
+### 1. Clone the repository and create the environment
+
+```bash
+conda create -n rsjev python=3.11 -y
+conda activate rsjev
+
+git clone https://github.com/Dongtcs/RSJEV.git
+cd RSJEV
+```
+
+### 2. Install dependencies
+
+First, install **PyTorch and torchvision matching your GPU and driver**. Follow the [official PyTorch installation instructions](https://pytorch.org/get-started/locally/) for your platform.
+
+For a lightweight **inference-oriented starting environment**, install the core packages recorded in the provided `requirements.txt`:
+
+```bash
+python -m pip install \
+    "transformers==5.6.0" \
+    "torch==2.7.1" \
+    "peft==0.18.1" \
+    "safetensors==0.8.0" \
+    "huggingface_hub>=1.5,<2" \
+    "sentencepiece==0.2.1" \
+    "Pillow==11.3.0"
+```
+
+This lightweight environment is intended for RSJEV inference. Additional dependencies may be required depending on the specific inference configuration.
+
+To attempt reproduction of the **original full software environment**, you may instead use:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+
 ## 🚀Evaluation
 
 The paper reports the following performance on three remote sensing scene classification benchmarks:
@@ -55,6 +109,26 @@ The paper reports the following performance on three remote sensing scene classi
 | NWPU-RESISC45 (NWPU) | 45 | 20% | **94.59%** | **94.58%** |
 
 These are the RSJEV results reported in Table I of the paper. The remaining images in each split are used for testing.
+
+### 🔍 Inference
+
+Download the pretrained RSJEV model weights from [🤗 Hugging Face](https://huggingface.co/Dongtcs/RSJEV) and save them to `./checkpoints/RSJEV/`.
+
+Alternatively, download the model using the Hugging Face CLI:
+
+```bash
+hf download Dongtcs/RSJEV --local-dir ./checkpoints/RSJEV
+```
+
+Run inference on a sample remote sensing image from the `images/` directory:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python demo.py \
+    --checkpoint ./checkpoints/RSJEV \
+    --image ./images/sparseresidential_232.jpg
+```
+
+To save the prediction results as a JSON file, add the optional `--json-out` argument:
 
 ### Inference efficiency
 
