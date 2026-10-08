@@ -1,0 +1,89 @@
+{
+  "dataset": "ucm",
+  "classes": [
+    {
+      "directory": "agricultural",
+      "answer": "agricultural"
+    },
+    {
+      "directory": "airplane",
+      "answer": "airplane"
+    },
+    {
+      "directory": "baseball_diamond",
+      "answer": "baseball diamond"
+    },
+    {
+      "directory": "beach",
+      "answer": "beach"
+    },
+    {
+      "directory": "buildings",
+      "answer": "buildings"
+    },
+    {
+      "directory": "chaparral",
+      "answer": "chaparral"
+    },
+    {
+      "directory": "dense_residential",
+      "answer": "dense residential"
+    },
+    {
+      "directory": "forest",
+      "answer": "forest"
+    },
+    {
+      "directory": "freeway",
+      "answer": "freeway"
+    },
+    {
+      "directory": "golf_course",
+      "answer": "golf course"
+    },
+    {
+      "directory": "harbor",
+      "answer": "harbor"
+    },
+    {
+      "directory": "intersection",
+      "answer": "intersection"
+    },
+    {
+      "directory": "medium_residential",
+      "answer": "medium residential"
+    },
+    {
+      "directory": "mobile_home_park",
+      "answer": "mobile home park"
+    },
+    {
+      "directory": "overpass",
+      "answer": "overpass"
+    },
+    {
+      "directory": "parking_lot",
+      "answer": "parking lot"
+    },
+    {
+      "directory": "river",
+      "answer": "river"
+    },
+    {
+      "directory": "runway",
+      "answer": "runway"
+    },
+    {
+      "directory": "sparse_residential",
+      "answer": "sparse residential"
+    },
+    {
+      "directory": "storage_tanks",
+      "answer": "storage tanks"
+    },
+    {
+      "directory": "tennis_court",
+      "answer": "tennis court"
+    }
+  ]
+}

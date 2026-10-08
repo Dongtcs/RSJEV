@@ -1,0 +1,14 @@
+{
+  "context": "This is an aerial remote sensing image. Identify its overall scene category.",
+  "questions": [
+    "What is the scene category shown in this aerial image?",
+    "Which listed scene category best describes this remote sensing image?",
+    "Classify the overall scene in this image using the provided categories.",
+    "Select the category that best matches the land use or scene visible in this image.",
+    "Considering the whole image, which of the listed scene types is the best match?",
+    "Choose the most appropriate scene label for this overhead image.",
+    "Which candidate category best represents the overall layout and visual features of this scene?",
+    "Determine the scene type of this aerial image from the available options."
+  ],
+  "eval_prompt_index": 0
+}

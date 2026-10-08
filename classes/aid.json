@@ -1,0 +1,125 @@
+{
+  "dataset": "aid",
+  "classes": [
+    {
+      "directory": "airport",
+      "answer": "airport"
+    },
+    {
+      "directory": "bare_land",
+      "answer": "bare land"
+    },
+    {
+      "directory": "baseball_field",
+      "answer": "baseball field"
+    },
+    {
+      "directory": "beach",
+      "answer": "beach"
+    },
+    {
+      "directory": "bridge",
+      "answer": "bridge"
+    },
+    {
+      "directory": "center",
+      "answer": "center"
+    },
+    {
+      "directory": "church",
+      "answer": "church"
+    },
+    {
+      "directory": "commercial",
+      "answer": "commercial"
+    },
+    {
+      "directory": "dense_residential",
+      "answer": "dense residential"
+    },
+    {
+      "directory": "desert",
+      "answer": "desert"
+    },
+    {
+      "directory": "farmland",
+      "answer": "farmland"
+    },
+    {
+      "directory": "forest",
+      "answer": "forest"
+    },
+    {
+      "directory": "industrial",
+      "answer": "industrial"
+    },
+    {
+      "directory": "meadow",
+      "answer": "meadow"
+    },
+    {
+      "directory": "medium_residential",
+      "answer": "medium residential"
+    },
+    {
+      "directory": "mountain",
+      "answer": "mountain"
+    },
+    {
+      "directory": "park",
+      "answer": "park"
+    },
+    {
+      "directory": "parking",
+      "answer": "parking"
+    },
+    {
+      "directory": "playground",
+      "answer": "playground"
+    },
+    {
+      "directory": "pond",
+      "answer": "pond"
+    },
+    {
+      "directory": "port",
+      "answer": "port"
+    },
+    {
+      "directory": "railway_station",
+      "answer": "railway station"
+    },
+    {
+      "directory": "resort",
+      "answer": "resort"
+    },
+    {
+      "directory": "river",
+      "answer": "river"
+    },
+    {
+      "directory": "school",
+      "answer": "school"
+    },
+    {
+      "directory": "sparse_residential",
+      "answer": "sparse residential"
+    },
+    {
+      "directory": "square",
+      "answer": "square"
+    },
+    {
+      "directory": "stadium",
+      "answer": "stadium"
+    },
+    {
+      "directory": "storage_tanks",
+      "answer": "storage tanks"
+    },
+    {
+      "directory": "viaduct",
+      "answer": "viaduct"
+    }
+  ]
+}

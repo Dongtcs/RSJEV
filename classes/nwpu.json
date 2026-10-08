@@ -1,0 +1,185 @@
+{
+  "dataset": "nwpu",
+  "classes": [
+    {
+      "directory": "airplane",
+      "answer": "airplane"
+    },
+    {
+      "directory": "airport",
+      "answer": "airport"
+    },
+    {
+      "directory": "baseball_diamond",
+      "answer": "baseball diamond"
+    },
+    {
+      "directory": "basketball_court",
+      "answer": "basketball court"
+    },
+    {
+      "directory": "beach",
+      "answer": "beach"
+    },
+    {
+      "directory": "bridge",
+      "answer": "bridge"
+    },
+    {
+      "directory": "chaparral",
+      "answer": "chaparral"
+    },
+    {
+      "directory": "church",
+      "answer": "church"
+    },
+    {
+      "directory": "circular_farmland",
+      "answer": "circular farmland"
+    },
+    {
+      "directory": "cloud",
+      "answer": "cloud"
+    },
+    {
+      "directory": "commercial_area",
+      "answer": "commercial area"
+    },
+    {
+      "directory": "dense_residential",
+      "answer": "dense residential"
+    },
+    {
+      "directory": "desert",
+      "answer": "desert"
+    },
+    {
+      "directory": "forest",
+      "answer": "forest"
+    },
+    {
+      "directory": "freeway",
+      "answer": "freeway"
+    },
+    {
+      "directory": "golf_course",
+      "answer": "golf course"
+    },
+    {
+      "directory": "ground_track_field",
+      "answer": "ground track field"
+    },
+    {
+      "directory": "harbor",
+      "answer": "harbor"
+    },
+    {
+      "directory": "industrial_area",
+      "answer": "industrial area"
+    },
+    {
+      "directory": "intersection",
+      "answer": "intersection"
+    },
+    {
+      "directory": "island",
+      "answer": "island"
+    },
+    {
+      "directory": "lake",
+      "answer": "lake"
+    },
+    {
+      "directory": "meadow",
+      "answer": "meadow"
+    },
+    {
+      "directory": "medium_residential",
+      "answer": "medium residential"
+    },
+    {
+      "directory": "mobile_home_park",
+      "answer": "mobile home park"
+    },
+    {
+      "directory": "mountain",
+      "answer": "mountain"
+    },
+    {
+      "directory": "overpass",
+      "answer": "overpass"
+    },
+    {
+      "directory": "palace",
+      "answer": "palace"
+    },
+    {
+      "directory": "parking_lot",
+      "answer": "parking lot"
+    },
+    {
+      "directory": "railway",
+      "answer": "railway"
+    },
+    {
+      "directory": "railway_station",
+      "answer": "railway station"
+    },
+    {
+      "directory": "rectangular_farmland",
+      "answer": "rectangular farmland"
+    },
+    {
+      "directory": "river",
+      "answer": "river"
+    },
+    {
+      "directory": "roundabout",
+      "answer": "roundabout"
+    },
+    {
+      "directory": "runway",
+      "answer": "runway"
+    },
+    {
+      "directory": "sea_ice",
+      "answer": "sea ice"
+    },
+    {
+      "directory": "ship",
+      "answer": "ship"
+    },
+    {
+      "directory": "snowberg",
+      "answer": "snowberg"
+    },
+    {
+      "directory": "sparse_residential",
+      "answer": "sparse residential"
+    },
+    {
+      "directory": "stadium",
+      "answer": "stadium"
+    },
+    {
+      "directory": "storage_tank",
+      "answer": "storage tank"
+    },
+    {
+      "directory": "tennis_court",
+      "answer": "tennis court"
+    },
+    {
+      "directory": "terrace",
+      "answer": "terrace"
+    },
+    {
+      "directory": "thermal_power_station",
+      "answer": "thermal power station"
+    },
+    {
+      "directory": "wetland",
+      "answer": "wetland"
+    }
+  ]
+}
